@@ -13,20 +13,13 @@ const images = [
   },
 ];
 
-const liImages = images.map(pic => {
-  const liTemp = document.createElement("li");
-  liTemp.insertAdjacentHTML('beforeend', `<img src=${pic.url} alt=${pic.alt} width="300" height="200">`);
-  liTemp.style.padding = "10px";
-  liTemp.style.backgroundColor = "#FF7F50";
-  liTemp.style.textAlign = "center";
-  liTemp.style.width = "90%";
-  liTemp.style.marginTop = "10px";
-  return liTemp;
-})
+const liImages = images
+  .map(pic => `<li><img src=${pic.url} alt=${pic.alt} width="300" height="200"></li>`)
+  .join('');
 
-const ulImages = document.querySelector(".gallery");
-ulImages.style.listStyleType = "none";
-ulImages.style.display = "flex";
-ulImages.style.flexDirection = "column";
-ulImages.style.width = "400px";
-ulImages.append(...liImages);
+const ulImages = document.querySelector('.gallery');
+ulImages.style.listStyleType = 'none';
+ulImages.style.display = 'flex';
+ulImages.style.flexDirection = 'column';
+ulImages.style.width = '400px';
+ulImages.insertAdjacentHTML('beforeend', liImages);
